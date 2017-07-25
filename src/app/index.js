@@ -9,13 +9,26 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Divider from 'material-ui/Divider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import DatePicker from 'material-ui/DatePicker';
+
+
+
+export const cyan400 = '#26c6da';
+export const cyan100 = '#b2ebf2';
+export const cyanA100 = '#84ffff';
+export const lightBlue300 = '#4fc3f7';
+export const teal200 = '#80cbc4';
+export const grey50 = '#fafafa';
 injectTapEventPlugin();
 
  const styles = {
     paddingleftRight:
         {paddingLeft: '20%',
         paddingRight:'20%',
-        margin: 12,}
+        margin: 12},
+        background:{
+            backgroundColor:grey50
+        }
  }
 
 //* parent component 
@@ -61,7 +74,7 @@ class BoardContainer extends React.Component{
         return (
             <MuiThemeProvider>
             <div style={styles.paddingleftRight}>
-                <Card >
+                <Card style={styles.background} >
                         <CardHeader
                             title="URL Avatar"
                             subtitle="Subtitle"
@@ -97,7 +110,7 @@ class BoardContainer extends React.Component{
                         </CardMedia>
                         
                         <CardActions>
-                            <FlatButton label="Action1" />
+                            <DatePicker hintText="Date Set" mode="landscape" />
                             <FlatButton label="Action2" />
                         </CardActions>
                     </Card>

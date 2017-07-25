@@ -14,7 +14,7 @@ import {
 // import { Header } from './header';
 // import { Home } from './home';
 const style = {
-  margin: 12,
+  margin: 12
 };
 class UserTask extends React.Component {
 
@@ -58,7 +58,7 @@ class UserTask extends React.Component {
     renderDefault() {
         return (
             <div className='container'>
-                <div className='commentContainer'>{this.props.text}</div>
+                <div className='commentContainer'>   {this.props.text}</div>
                
                  <RaisedButton label="Edit Task"  primary={true} onClick={this.edit.bind(this)} style ={style}/>
                   <RaisedButton label="Delete Task"  secondary={true}onClick={this.delete.bind(this)} style ={style}/>
