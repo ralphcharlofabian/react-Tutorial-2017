@@ -7,73 +7,16 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Divider from 'material-ui/Divider';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 injectTapEventPlugin();
-// import { Header } from './components/header';
-// import { Home } from './components/home';
 
-// class App extends React.Component {
-
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             status: 0,
-//             editing: false,
-//             deleting: false
-//         };
-//     }
-  
-
-//     edit() {
-//         this.setState({ editing: true });
-//     }
-
-//     delete() {
-//         this.setState({ deleting: true });
-//         this.props.deleteTaskFromContainer(this.props.index);
-//     }
-
-//     save() {
-//         this.props.editTaskFromContainer(this.refs.newText.value, this.props.index);
-//         this.setState({ editing: false });
-//     }
-
-//     renderDefault() {
-//         return (
-//             <div className='container'>
-//                 <div className='commentContainer'>{this.props.text}</div>
-//                 <button onClick={this.edit.bind(this)}> Edit</button>
-//                 <button onClick={this.delete.bind(this)}> Delete</button>
-//             </div>
-//         )
-//     }
-
-//     renderForm() {
-//         return (
-//             <div className='container'>
-//                 <div>
-//                     <textarea ref='newText' defaultValue={this.props.text}></textarea>
-//                     <button onClick={this.save.bind(this)}>Save</button>
-//                 </div>
-//             </div>
-//         )
-//     }
-
-
-//     render() {
-//       //  const{editTaskFromContainer,deleteTaskFromContainer} = this.props;
-//         return (
-//             <div className='container'>
-//                 {this.state.editing ?
-//                     this.renderForm()
-//                     :
-//                     this.renderDefault()
-//                 }
-//             </div>
-
-//         );
-//     }
-// }
-
+ const styles = {
+    paddingleftRight:
+        {paddingLeft: '20%',
+        paddingRight:'20%',
+        margin: 12,}
+ }
 
 //* parent component 
 class BoardContainer extends React.Component{
@@ -82,8 +25,7 @@ class BoardContainer extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            userTasks : this.props.userTasks,
-            output: '8====(.@.)'
+            userTasks : this.props.userTasks
         }
     }
 
@@ -112,44 +54,56 @@ class BoardContainer extends React.Component{
         })
     }
 
-    textChange(){
-        setTimeout(()=> {
-            this.setState({
-                output: '8======(.@.)'
-            })
-        }, 2000);
-         setTimeout(()=> {
-            this.setState({
-                output: '8=(.@.) '
-            })
-        }, 2000);
-    }
+  
 
     render() {
-        this.textChange();
+      
         return (
             <MuiThemeProvider>
-            <div>
-                <RaisedButton label="Add Task"  onClick={this.add.bind(this,'New Task')} />
-                <div className='boardContainer'>
-                    {this.props.userTasks.map((item, i) => {
-                        return (
-                            <div>
-                                 <Divider/>
-                            <UserTask key={i}
-                                index={i}
-                                text={item}
-                                editTaskFromContainer={this.editTask.bind(this)}
-                                deleteTaskFromContainer={this.deleteTask.bind(this)}
-                                output={this.state.output}
-                              //  userTasks={this.props.userTasks}
-                            />
-                           
-                            </div>
+            <div style={styles.paddingleftRight}>
+                <Card >
+                        <CardHeader
+                            title="URL Avatar"
+                            subtitle="Subtitle"
+                            avatar="images/jsa-128.jpg"
+                        />
+                        
+                        <CardText>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                         </CardText>
+                        <CardMedia >
+                             <RaisedButton label="Add Task"  onClick={this.add.bind(this,'New Task')} />
+                            <div className='boardContainer'>
+                                {this.props.userTasks.map((item, i) => {
+                                    return (
+                                        <div>
 
-                        );
-                    })}
-                </div>
+                                            <UserTask key={i}
+                                                index={i}
+                                                text={item}
+                                                editTaskFromContainer={this.editTask.bind(this)}
+                                                deleteTaskFromContainer={this.deleteTask.bind(this)}
+                                                output={this.state.output}
+                                            />
+
+                                        </div>
+
+                                    );
+                                })}
+                            </div>
+                        </CardMedia>
+                        
+                        <CardActions>
+                            <FlatButton label="Action1" />
+                            <FlatButton label="Action2" />
+                        </CardActions>
+                    </Card>
+               
+                <Divider/>
+               
             </div>
              </MuiThemeProvider>
 
@@ -162,10 +116,122 @@ BoardContainer.defaultProps = {
     userAge: 27,
     userOccupation:'Boxer',
     userName:'Willie Revilla',
-    userTasks:['do the doggie dance',
-            'do the chill',
-            'sweep the floor']
+    userTasks:['Read Books about Javascript',
+            'Do comissioned artworks',
+            'Do the Jekyll',
+            'Chill AF']
 }
 
 
 render(<BoardContainer/>, window.document.getElementById('root'));
+
+// class UserList extends React.Component{
+
+//         constructor(props){
+//         super(props);
+//         this.state = {
+//             UserInfo : this.props.UserList
+//         }
+//     }
+    
+//          render() {
+//       console.log(this.props.UserList)
+//         return (
+            
+//             <MuiThemeProvider>
+//             <div>
+                
+//                 {/* //<RaisedButton label="Add Task"  onClick={this.add.bind(this,'New Task')} /> */}
+//                 <div className='userList'>
+//                     {/* {this.props.UserList.map((item, i) => {
+                       
+//                         return (
+//                            console.log(this.props.UserList)
+
+//                         );
+//                     })} */}
+//                 </div>
+//             </div>
+//              </MuiThemeProvider>
+
+//         )
+//     }
+
+// }
+
+// UserList.defaultProps =[{
+//     userId:'1738',
+//     userAge: 27,
+//     userOccupation:'Driver',
+//     userName:'Willie Revilla',
+//     userTasks: [{
+//         taskInfo: 'clean the car',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo: 'heat the car engine',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo: 'drive',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }]
+// },{
+//     userId:'1813',
+//     userAge: 35,
+//     userOccupation:'Security Personel',
+//     userName:'Randy Batista',
+//     userTasks:[{
+//         taskInfo: 'Secure the house',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo:  'Do night shift guarding',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo: 'Initialize Identity checking',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo: 'Secure Peace and Order',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }]
+// },{
+//     userId:'222',
+//     userAge: 25,
+//     userOccupation:'Cook',
+//     userName:'Chief Logro',
+//     userTasks: [{
+//         taskInfo: 'Lead the Kitchen cooking',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo: 'Buy ingridients',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo: 'Prepare Food',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }, {
+//         taskInfo: 'Head Count for Visitors',
+//         taskDateFrom: '3/27/2017',
+//         taskDateTo: '8/3/2017',
+//         Status: false
+//     }]
+// }
+// ]
+// render(<UserList/>, window.document.getElementById('root'));
