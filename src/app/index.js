@@ -10,7 +10,7 @@ import Divider from 'material-ui/Divider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
-
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 
 export const cyan400 = '#26c6da';
@@ -23,12 +23,28 @@ injectTapEventPlugin();
 
  const styles = {
     paddingleftRight:
-        {paddingLeft: '20%',
-        paddingRight:'20%',
-        margin: 12},
-        background:{
+        {
+             display:'flex',
+            justifyContent:'center',
+            paddingLeft: '10%',
+            paddingRight:'10%',
+            paddingTop:'2%',
+            margin: '5%'},
+    background:{
             backgroundColor:grey50
-        }
+        },
+    center:{
+        display:'flex',
+        justifyContent:'center'
+    },
+    paddingTaskCard:{
+         display:'flex',
+            justifyContent:'center',
+            paddingLeft: '20%',
+            paddingRight:'20%',
+            paddingTop:'2%',
+            margin: '5%'},
+    marginBottom:'10%',
  }
 
 //* parent component 
@@ -75,6 +91,34 @@ class BoardContainer extends React.Component{
             <MuiThemeProvider>
             <div style={styles.paddingleftRight}>
                 <Card style={styles.background} >
+                         <Divider/>
+               <CardHeader
+                            title="URL Avatar"
+                            subtitle="Subtitle"
+                            avatar="images/jsa-128.jpg"
+                        />
+                        
+                        <CardText>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                         </CardText>
+                        <CardMedia >
+                            
+                             
+                            <div className='boardContainer'>
+                                <Card style={styles.paddingleftRight}>
+                                    <CardMedia>
+                                       
+                                    </CardMedia>
+                                </Card>
+                                 
+                            </div>
+                        </CardMedia>
+                        
+                      
+                <Divider />
                         <CardHeader
                             title="URL Avatar"
                             subtitle="Subtitle"
@@ -88,8 +132,12 @@ class BoardContainer extends React.Component{
                             Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
                          </CardText>
                         <CardMedia >
-                             <RaisedButton label="Add Task"  onClick={this.add.bind(this,'New Task')} />
+                            
+                             
                             <div className='boardContainer'>
+                                <Card style={styles.paddingleftRight}>
+                                    <CardMedia>
+                                        <RaisedButton label="Add Task"  onClick={this.add.bind(this,'New Task')} />
                                 {this.props.userTasks.map((item, i) => {
                                     return (
                                         <div>
@@ -100,12 +148,16 @@ class BoardContainer extends React.Component{
                                                 editTaskFromContainer={this.editTask.bind(this)}
                                                 deleteTaskFromContainer={this.deleteTask.bind(this)}
                                                 output={this.state.output}
+                                                style={styles.paddingTaskCard}
                                             />
 
                                         </div>
 
                                     );
                                 })}
+                                    </CardMedia>
+                                </Card>
+                                 
                             </div>
                         </CardMedia>
                         
@@ -114,8 +166,7 @@ class BoardContainer extends React.Component{
                             <FlatButton label="Action2" />
                         </CardActions>
                     </Card>
-               
-                <Divider/>
+                
                
             </div>
              </MuiThemeProvider>
@@ -131,120 +182,9 @@ BoardContainer.defaultProps = {
     userName:'Willie Revilla',
     userTasks:['Read Books about Javascript',
             'Do comissioned artworks',
-            'Do the Jekyll',
-            'Chill AF']
+            'Study react and Redux',
+            'Watch youtube tutorials']
 }
 
 
 render(<BoardContainer/>, window.document.getElementById('root'));
-
-// class UserList extends React.Component{
-
-//         constructor(props){
-//         super(props);
-//         this.state = {
-//             UserInfo : this.props.UserList
-//         }
-//     }
-    
-//          render() {
-//       console.log(this.props.UserList)
-//         return (
-            
-//             <MuiThemeProvider>
-//             <div>
-                
-//                 {/* //<RaisedButton label="Add Task"  onClick={this.add.bind(this,'New Task')} /> */}
-//                 <div className='userList'>
-//                     {/* {this.props.UserList.map((item, i) => {
-                       
-//                         return (
-//                            console.log(this.props.UserList)
-
-//                         );
-//                     })} */}
-//                 </div>
-//             </div>
-//              </MuiThemeProvider>
-
-//         )
-//     }
-
-// }
-
-// UserList.defaultProps =[{
-//     userId:'1738',
-//     userAge: 27,
-//     userOccupation:'Driver',
-//     userName:'Willie Revilla',
-//     userTasks: [{
-//         taskInfo: 'clean the car',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo: 'heat the car engine',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo: 'drive',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }]
-// },{
-//     userId:'1813',
-//     userAge: 35,
-//     userOccupation:'Security Personel',
-//     userName:'Randy Batista',
-//     userTasks:[{
-//         taskInfo: 'Secure the house',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo:  'Do night shift guarding',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo: 'Initialize Identity checking',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo: 'Secure Peace and Order',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }]
-// },{
-//     userId:'222',
-//     userAge: 25,
-//     userOccupation:'Cook',
-//     userName:'Chief Logro',
-//     userTasks: [{
-//         taskInfo: 'Lead the Kitchen cooking',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo: 'Buy ingridients',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo: 'Prepare Food',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }, {
-//         taskInfo: 'Head Count for Visitors',
-//         taskDateFrom: '3/27/2017',
-//         taskDateTo: '8/3/2017',
-//         Status: false
-//     }]
-// }
-// ]
-// render(<UserList/>, window.document.getElementById('root'));
